@@ -39,12 +39,14 @@ for (let ext in typeExtension) {
 
 let domains = domainCompleto.map((item, index) => {
   console.log("Posible Dominio: " + item);
-  listDomain = "<li>" + item + "</li>";
+  listDomain += "<li>" + item + "</li>";
   return listDomain;
 });
 
 window.onload = function() {
   //write your code here
   let viewPage = document.querySelector("#list");
-  viewPage.innerHTML = domains;
+  for (let x in domains) {
+    viewPage.innerHTML = domains[x];
+  }
 };
