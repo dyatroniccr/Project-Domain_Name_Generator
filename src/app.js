@@ -21,33 +21,30 @@ let typeExtension = [
   ".io"
 ];
 
-let combDomain = [];
-for (let varPron in pronoun) {
-  for (let varAdj in adj) {
-    for (let varNou in noun) {
-      combDomain.push(pronoun[varPron] + adj[varAdj] + noun[varNou]);
+let domainCompleto = [];
+
+let listDomain = "";
+
+for (let ext in typeExtension) {
+  for (let varPron in pronoun) {
+    for (let varAdj in adj) {
+      for (let varNou in noun) {
+        domainCompleto.push(
+          pronoun[varPron] + adj[varAdj] + noun[varNou] + typeExtension[ext]
+        );
+      }
     }
   }
 }
 
-let domainCompleto = [];
-
-for (let ext in typeExtension) {
-  for (let title in combDomain) {
-    domainCompleto.push(
-      "<li>" + combDomain[title] + typeExtension[ext] + "</li>"
-    );
-  }
-}
-let domainConsola = "";
-domainCompleto.map((item, index) => {
-  domainConsola = item.replace("<li>", "");
-  domainConsola = domainConsola.replace("</li>", "");
-  console.log(domainConsola);
+let domains = domainCompleto.map((item, index) => {
+  console.log("Posible Dominio: " + item);
+  listDomain = "<li>" + item + "</li>";
+  return listDomain;
 });
 
 window.onload = function() {
   //write your code here
-  //console.log(domain);
-  document.querySelector("#list").innerHTML = domainCompleto;
+  let viewPage = document.querySelector("#list");
+  viewPage.innerHTML = domains;
 };
