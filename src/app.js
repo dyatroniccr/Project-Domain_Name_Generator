@@ -5,25 +5,28 @@ import "./style.css";
 let pronoun = ["the", "our"];
 let adj = ["great", "big"];
 let noun = ["jogger", "racoon"];
-let typeExtension = [];
+let typeExtension = [".com", ".net", ".cr", ".biz", ".us", ".io"];
 
-function randomNum(arrSelect) {
-  let number = Math.floor(Math.random() * arrSelect.length);
-  return arrSelect[number];
-}
+let temp = "";
 
-let domain = pronoun.map((item, index) => {
-  let temp = item + adj[index];
+let domain = typeExtension.map((item, index) => {
+  temp = "<li>" + adj[index] + item + "</li>";
   return temp;
 });
-let excuseView = () => {
-  return "<h5 >" + randomNum(pronoun) + " " + randomNum(adj) + " " + "</h5>";
-};
+let tempDomain = "";
 
 window.onload = function() {
   //write your code here
   console.log(domain);
-  document.querySelector("#btn").addEventListener("click", () => {
-    document.querySelector("#excuse").innerHTML = domain;
-  });
+  document.querySelector("#excuse").innerHTML = domain;
+
+  for (let varPron in pronoun) {
+    console.log(pronoun[varPron]);
+    for (let varAdj in adj) {
+      for (let varNou in noun) {
+        tempDomain = pronoun[varPron] + adj[varAdj] + noun[varNou];
+        console.log(tempDomain);
+      }
+    }
+  }
 };
